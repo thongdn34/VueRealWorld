@@ -66,7 +66,7 @@ const actions = {
   async [FETCH_COMMENTS](context, articleSlug) {
     const {
       data
-    } = apiService.get(articleSlug);
+    } = await apiService.get(articleSlug);
     context.commit(SET_COMMENTS, data.comments);
     return data.comments;
   },
@@ -81,7 +81,7 @@ const actions = {
   async [FAVORITE_ADD](context, payload) {
     const {
       data
-    } = favoriteService.add(payload);
+    } = await favoriteService.add(payload);
     context.commit(UPDATE_ARTICLE_IN_LIST, data.article, {
       root: true
     });
@@ -90,7 +90,7 @@ const actions = {
   async [FAVORITE_REMOVE](context, payload) {
     const {
       data
-    } = favoriteService.remove(payload);
+    } = await favoriteService.remove(payload);
     context.commit(UPDATE_ARTICLE_IN_LIST, data.article, {
       root: true
     });

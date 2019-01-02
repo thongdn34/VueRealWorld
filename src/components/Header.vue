@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar navbar-dark">
+  <div class="navbar navbar-light">
     <div class="container">
       <router-link class="navbar-brand" :to="{name:'home'}">
         Sutrix
@@ -11,7 +11,9 @@
         <li class="nav-item">
           <router-link class="nav-link" active-class="active" exact :to="{name:'login'}"><i class="ion-compose">Sign in</i></router-link>
         </li>
-        <li class="nav-item" active-class="active" exact :to="{name:'register'}"><i class="ion-compose"></i>Sign up</li>
+        <li class="nav-item">
+          <router-link class="nav-link" active-class="active" exact :to="{name:'register'}"><i class="ion-compose">Sign up</i></router-link>
+        </li>
       </ul>
       <ul v-else class="nav navbar-nav pull-xs right" >
         <li class="nav-item">
@@ -21,7 +23,7 @@
           <router-link class="nav-link" active-class="active" exact :to="{name:'article-edit'}"><i class="ion-compose"></i>&nbsp;New Article</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" active-class="active" exact :to="{name:'setting'}"><i class="ion-gear-a">&nbsp;Setting</i></router-link>
+          <router-link class="nav-link" active-class="active" exact :to="{name:'settings'}"><i class="ion-gear-a">&nbsp;Setting</i></router-link>
         </li>
         <li class="nav-item" v-if="currentUser.username">
           <router-link class="nav-link" active-class="active" exact :to="{name:'profile',params:{username:currentUser.username}}">{{currentUser.username}}</router-link>

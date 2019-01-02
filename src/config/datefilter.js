@@ -1,4 +1,4 @@
-import { default as formart } from "date-fns/formart"; 
+import { format } from "date-fns"; 
 export default date=>{
-  return formart(new Date(date),'MMMM D, YYYY');
+  return format(new Date(date),'MMMM D, YYYY');
 };
