@@ -8,12 +8,15 @@ export default {
   name:"Tag",
   props:{
     name:{
-      type:String
+      type:String,require:true
     },
     className:{
       type:String,
       default:"tag-pill tag-default"
     }
-  }
+  },
+  mounted() {
+    console.log(this.name);
+  },
 }
 </script>

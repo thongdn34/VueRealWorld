@@ -44,7 +44,7 @@
           <div class="sidebar">
             <p>Popular Tag</p>
             <div class="tag-list">
-              <tag-app v-for="(item, index) in tags" :key="index"></tag-app>
+              <tag-app v-for="(item, index) in tags" :key="index" v-bind:name="item"></tag-app>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch(FETCH_TAGS);
-    
+
   },
   computed: {
     ...mapGetters(["isAuthenticated", "tags"]),

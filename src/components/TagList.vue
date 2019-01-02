@@ -1,7 +1,10 @@
 <template>
   <ul class="tag-list">
     <li class="tag-default tag-pill tag-outline" v-for="(tag,index) in tags" :key="index">
-      <span v-text="tag"/>
+      <span>
+        {{tag}}
+      </span>
+
     </li>
   </ul>
 </template>

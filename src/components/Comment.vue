@@ -31,7 +31,7 @@ export default {
   computed: {
     isCurrentUser(){
       if(this.currentUser.username&&this.comment.author.username){
-        return this.comment.author.username=this.currentUser.username;
+        return this.comment.author.username===this.currentUser.username;
       }
       return false;
     },

@@ -63,7 +63,6 @@ const actions = {
       })
       .catch(error => {
         throw new Error(error);
-
       })
   },
 }
