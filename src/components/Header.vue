@@ -1,8 +1,8 @@
 <template>
-  <div class="navbar navbar-light">
+  <nav class="navbar navbar-light">
     <div class="container">
-      <router-link class="navbar-brand" :to="{name:'home'}">
-        Sutrix
+      <router-link class="navbar-brand " :to="{name:'home'}">
+        <p class="text-info">Sutrix</p>
       </router-link>
       <ul v-if="!isAuthenticated" class="nav navbar-nav pull-xs-right" >
         <li class="nav-item">
@@ -30,7 +30,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </nav>
 </template>
 <script>
 import { mapGetters } from "vuex";

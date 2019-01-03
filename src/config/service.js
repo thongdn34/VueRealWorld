@@ -52,10 +52,10 @@ export const articleService={
     });
   },
   get(slug){
-    return apiService.get("articles",slug);
+    return apiService.get('articles',slug);
   },
   create(params){
-    return apiService.post("articles",{articles:params});
+    return apiService.post("articles",{article:params});
   },
   update(params,slug){
     return apiService.update("articles",slug,{articles:params});

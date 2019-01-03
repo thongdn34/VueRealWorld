@@ -2,7 +2,7 @@
   <div class="article-preview">
     <article-meta isPreview :article="article"/>
     <router-link class="preview-link" :to="articleLink">
-      <h1>{{article.title}}</h1>
+      <h1 class="text-info">{{article.title}}</h1>
       <p>{{article.description}}</p>
       <span>...Read more...</span>
       <tag-list :tags="article.tagList"/>

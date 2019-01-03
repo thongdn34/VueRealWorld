@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <div class="banner">
+    <div class="banner bg-info text-white">
       <div class="container">
         <h1 class="logo-font">Conduit</h1>
         <p>A place to share your knowledge</p>
@@ -19,12 +19,9 @@
                 >Your Feed</router-link>
               </li>
               <li class="nav-item">
-                <router-link
-                  :to="{name:'home'}"
-                  exact
-                  class="nav-link"
-                  active-class="active"
-                >Global Feed</router-link>
+                <router-link :to="{name:'home'}" exact class="nav-link" active-class="active">
+                  <p class="text-info">Global Feed</p>
+                </router-link>
               </li>
               <li class="nav-item" v-if="tag">
                 <router-link
@@ -65,7 +62,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch(FETCH_TAGS);
-
   },
   computed: {
     ...mapGetters(["isAuthenticated", "tags"]),
@@ -75,3 +71,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.nav-pills.outline-active .nav-link.active {
+  color: #5bc0de !important;
+  border-bottom: #5bc0de !important;
+}
+</style>

@@ -52,7 +52,11 @@
                 </div>
               </fieldset>
             </fieldset>
-            <button class="btn btn-lg pull-xs-right btn-primary" :disabled="inProgress" type="submit">Publish</button>
+            <button
+              class="btn btn-lg pull-xs-right btn-primary"
+              :disabled="inProgress"
+              type="submit"
+            >Publish</button>
           </form>
         </div>
       </div>
@@ -92,14 +96,16 @@ export default {
   methods: {
     onPublish(slug) {
       let action = slug ? ARTICLE_EDIT : ARTICLE_PUBLISH;
+      // console.log(action);
+
       this.inProgress = true;
       this.$store
         .dispatch(action)
         .then(({ data }) => {
           this.inProgress = false;
+          console.log(data.article.slug);
           this.$router.push({
-            name: "article",
-            params: { slug: data.article.slug }
+            name: 'home'
           });
         })
         .catch(({ response }) => {

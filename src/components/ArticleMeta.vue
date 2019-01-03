@@ -6,7 +6,7 @@
     <div class="info">
       <router-link
         :to="{name:'profile',params:{username:article.author.username}}"
-        class="author"
+        class="author text-info"
       >{{article.author.username}}</router-link>
       <span class="date">{{article.createAt|date}}</span>
     </div>

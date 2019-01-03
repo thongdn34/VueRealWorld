@@ -12,7 +12,7 @@ export default {
     },
     className:{
       type:String,
-      default:"tag-pill tag-default"
+      default:"tag tag-pill tag-info"
     }
   },
   mounted() {
