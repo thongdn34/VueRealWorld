@@ -15,8 +15,5 @@ export default {
       default:"tag tag-pill tag-info"
     }
   },
-  mounted() {
-    console.log(this.name);
-  },
 }
 </script>

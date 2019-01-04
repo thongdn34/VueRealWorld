@@ -21,12 +21,16 @@ const getters = {
 const actions={
   [FETCH_PROFILE](context,payload){
     const {username}=payload;
-    return apiService.get("profile",username)
+    return apiService.get("profiles",username)
       .then(({data})=>{
+        console.log(data);
+        
         context.commit(SET_PROFILE,data.profile);
         return data;
       })
-      .catch(({response})=>{
+      .catch((response)=>{
+        console.log(response);
+        
         context.commit(SET_ERROR, response.data.errors);
       })
   },

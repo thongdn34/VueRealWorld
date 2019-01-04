@@ -18,7 +18,10 @@ const apiService={
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
-  get(url,slug=""){
+  get(url, slug=""){
+    // debugger
+    // console.log(`${url}/${slug}`);
+    
     return Vue.axios.get(`${url}/${slug}`).catch(err=>{
       throw new Error(`API service error ${err}`);
     });
@@ -52,7 +55,7 @@ export const articleService={
     });
   },
   get(slug){
-    return apiService.get('articles',slug);
+    return apiService.get("articles",slug);
   },
   create(params){
     return apiService.post("articles",{article:params});

@@ -78,7 +78,6 @@ const mutations = {
     state.articles = articles;
     state.articlesCount = articlesCount;
     state.isLoading = false;
-    console.log(state.isLoading)
   },
   [SET_TAGS](state, tags) {
     state.tags = tags;

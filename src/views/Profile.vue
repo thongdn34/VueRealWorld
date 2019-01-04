@@ -87,7 +87,7 @@ export default {
     ...mapGetters(["currentUser", "profile", "isAuthenticated"])
   },
   methods: {
-    isCurrentuser() {
+    isCurrentUser() {
       if (this.currentUser.username && this.profile.username) {
         return (this.currentUser.username = this.profile.username);
       }

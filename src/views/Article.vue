@@ -46,8 +46,8 @@ import CommentVue from "../components/Comment.vue";
 import CommentEditorVue from "../components/CommentEditor.vue";
 import TagVue from "../components/Tag.vue";
 import marked from "marked";
-import store from "../store";
-import { mapGetters } from "vuex";
+// import store from "../store";
+import { mapActions, mapGetters } from "vuex";
 import { FETCH_ARTICLE, FETCH_COMMENTS } from "../store/actionType";
 export default {
   name: "Article",
@@ -58,25 +58,22 @@ export default {
   },
   components: {
     "article-meta": ArticleMetaVue,
-    'comment': CommentVue,
+    comment: CommentVue,
     "comment-editor": CommentEditorVue,
     "tag-app": TagVue
   },
+  mounted() {
+    this.$store.dispatch(FETCH_ARTICLE, this.$route.params.slug);
+    this.$store.dispatch(FETCH_COMMENTS, this.$route.params.slug);
+  },
   computed: {
-    ...mapGetters(["article", "currentUser", "comments", "isAuthenticeted"])
+    ...mapGetters(["article", "currentUser", "comments", "isAuthenticated"])
   },
   methods: {
+    ...mapActions(["FETCH_ARTICLE"]),
     parseMarkdown(content) {
       return marked(content);
     }
-  },
-  beforeRouteEnter(to, from, next) {
-    Promise.all([
-      store.dispatch(FETCH_ARTICLE, to.params.slug),
-      store.dispatch(FETCH_COMMENTS, to.params.slug)
-    ]).then(() => {
-      next();
-    });
   }
 };
 </script>

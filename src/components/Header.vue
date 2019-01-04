@@ -15,7 +15,7 @@
           <router-link class="nav-link" active-class="active" exact :to="{name:'register'}"><i class="ion-compose">Sign up</i></router-link>
         </li>
       </ul>
-      <ul v-else class="nav navbar-nav pull-xs right" >
+      <ul v-else class="nav navbar-nav pull-xs-right" >
         <li class="nav-item">
           <router-link class="nav-link" active-class="active" exact :to="{name:'home'}">Home</router-link>
         </li>

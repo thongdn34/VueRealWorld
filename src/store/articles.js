@@ -59,14 +59,14 @@ const actions = {
     }
     const {
       data
-    } = await articleService.get(articleSlug);
+    } = await apiService.get('articles', articleSlug);
     context.commit(SET_ARTICLE, data.article);
     return data;
   },
   async [FETCH_COMMENTS](context, articleSlug) {
     const {
       data
-    } = await apiService.get(articleSlug);
+    } = await commentService.get(articleSlug);
     context.commit(SET_COMMENTS, data.comments);
     return data.comments;
   },

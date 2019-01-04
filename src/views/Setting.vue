@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
           <h1 class="text-xs-center">Your Settings</h1>
-          <form @submit.prevent="updateSettings();">
+          <form @submit.prevent="updateSetting();">
             <fieldset>
               <fieldset class="form-group">
                 <input

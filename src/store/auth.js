@@ -62,7 +62,7 @@ const actions={
         context.commit(SET_AUTH,data.user);
       })
       .catch(({response})=>{
-        context.commit(SET_ERROR,response.data.error);
+        context.commit(SET_ERROR,response.data.errors);
       });
     }else{
       context.commit(CLEAR_AUTH);
@@ -85,7 +85,7 @@ const actions={
 
 const mutations={
   [SET_ERROR](state,error){
-    state.error=error;
+    state.errors=error;
   },
   [SET_AUTH](state,user){
     state.isAuthenticated=true;
