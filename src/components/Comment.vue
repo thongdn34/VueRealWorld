@@ -9,7 +9,7 @@
         {{comment.author.username}}
       </router-link>
       <span class="date-posted">
-        {{comment.createAt|date}}
+        {{comment.createdAt|date}}
       </span>
       <span v-if="isCurrentUser" class="mod-options">
         <i class="ion-trash-a" @click="destroy(slug,comment.id)"></i>
@@ -41,6 +41,10 @@ export default {
     destroy(slug,commentId){
       this.$store.dispatch(COMMENT_DESTROY,{slug,commentId});
     }
-  }
+  },
+  // mounted(){
+  //   console.log(this.comment);
+    
+  // }
 }
 </script>

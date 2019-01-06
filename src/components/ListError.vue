@@ -1,6 +1,6 @@
 <template v-show="errors">
   <ul class="error-message">
-    <li v-for="(value, index) in errors" :key="index">
+    <li v-for="(value, index) in error" :key="index">
       <span>{{index}}</span>
       <span v-for="item in value" :key="item">{{item}}</span>
     </li>
@@ -11,7 +11,7 @@
 export default {
   name:"ListError",
   props:{
-    errors:{type:Object}
+    error:{type:Object}
   }
 }
 </script>

@@ -7,8 +7,8 @@
           <p class="text-xs-center">
             <router-link :to="{name:'register'}">Need an account?</router-link>
           </p>
-          <ul v-if="errors" class="error-message">
-            <li v-for="(item, index) in errors" :key="index">{{index}} {{item|error}}</li>
+          <ul v-if="error" class="error-message">
+            <li v-for="(item, index) in error" :key="index">{{index}} {{item|error}}</li>
           </ul>
           <form @submit.prevent="onSubmit(email,password);">
             <fieldset class="form-group">
@@ -18,6 +18,7 @@
                 v-model="email"
                 placeholder="nhatthong34@gmail.com"
                 name="email"
+                v-validate="'required|email'"
               >
               <span>{{ errors.first('email') }}</span>
             </fieldset>
@@ -28,7 +29,9 @@
                 v-model="password"
                 placeholder="password"
                 name="password"
+                v-validate="{required:true,excluded:password}"
               >
+              <span>{{ errors.first('password') }}</span>
             </fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
           </form>
@@ -41,14 +44,14 @@
 
 <script>
 import { LOGIN } from "../store/actionType";
-import { mapState } from "vuex";
 export default {
   name: "Login",
   data() {
     return {
       email: "",
       password: "",
-      submitted: true
+      submitted: true,
+      error: {}
     };
   },
   methods: {
@@ -58,7 +61,10 @@ export default {
         if (valid) {
           this.$store
             .dispatch(LOGIN, { email, password })
-            .then(() => this.$router.push({ name: "home" }));
+            .then(() => this.$router.push({ name: "home" }))
+            .catch(({response})=>{
+              this.error=response.data.errors;
+            });
         }
       });
     }
@@ -68,10 +74,5 @@ export default {
       this.$router.push({ name: "home" });
     }
   },
-  computed: {
-    ...mapState({
-      errors: state => state.auth.errors
-    })
-  }
 };
 </script>
