@@ -99,11 +99,11 @@ export default {
         this.profile.username &&
         this.currentUser.username === this.profile.username
       ) {
-        console.log("true");
+        // console.log("true");
 
         return (this.isCurrent = true);
       }
-      console.log("fasle");
+      // console.log("fasle");
 
       return (this.isCurrent = false);
     },

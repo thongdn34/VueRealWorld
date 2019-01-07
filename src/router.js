@@ -15,11 +15,6 @@ export default new Router({
           component: () => import("./views/HomeGlobal")
         },
         {
-          path: "my-feed",
-          name: "home-my-feed",
-          component: () => import("./views/HomeMyFeed")
-        },
-        {
           path: "tag/:tag",
           name: "home-tag",
           component: () => import("./views/HomeTag")
