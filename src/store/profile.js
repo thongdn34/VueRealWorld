@@ -22,10 +22,8 @@ const actions={
   [FETCH_PROFILE](context,payload){
     const {username}=payload;
     return apiService.get("profiles",username)
-      .then(({data})=>{
-        console.log(data);
-        
-        context.commit(SET_PROFILE,data.profile);
+      .then(async ({data})=>{
+        await context.commit(SET_PROFILE,data.profile);
         return data;
       })
       .catch((response)=>{
@@ -36,7 +34,7 @@ const actions={
   },
   [FETCH_PROFILE_FOLLOW](context,payload){
     const{username}=payload;
-    return apiService.post(`profile/${username}/follow`)
+    return apiService.post(`profiles/${username}/follow`)
       .then(({data})=>{
         context.commit(SET_PROFILE,data.profile);
         return data;
@@ -44,7 +42,7 @@ const actions={
   },
   [FETCH_PROFILE_UNFOLLOW](context,payload){
     const{username}=payload;
-    return apiService.delete(`profile/${username}/follow`)
+    return apiService.delete(`profiles/${username}/follow`)
       .then(({data})=>{
         context.commit(SET_PROFILE, data.profile);
         return data;

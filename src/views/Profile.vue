@@ -7,7 +7,7 @@
             <img :src="profile.image" class="user-img">
             <h4>{{ profile.username }}</h4>
             <p>{{ profile.bio }}</p>
-            <div v-if="isCurrentUser()">
+            <div v-if="!isCurrent">
               <router-link
                 class="btn btn-sm btn-outline-secondary action-btn"
                 :to="{ name: 'settings' }"
@@ -49,7 +49,7 @@
                   class="nav-link"
                   active-class="active"
                   exact
-                  :to="{ name: 'profile' }"
+                  :to="{ name: 'profile' ,params:{username:currentUser.username} }"
                 >My Articles</router-link>
               </li>
               <li class="nav-item">
@@ -80,18 +80,32 @@ import {
 import { mapGetters } from "vuex";
 export default {
   name: "Profile",
+  data() {
+    return {
+      isCurrent: false
+    };
+  },
   mounted() {
     this.$store.dispatch(FETCH_PROFILE, this.$route.params);
+    
   },
   computed: {
     ...mapGetters(["currentUser", "profile", "isAuthenticated"])
   },
   methods: {
     isCurrentUser() {
-      if (this.currentUser.username && this.profile.username) {
-        return (this.currentUser.username = this.profile.username);
+      if (
+        this.currentUser.username &&
+        this.profile.username &&
+        this.currentUser.username === this.profile.username
+      ) {
+        console.log("true");
+
+        return (this.isCurrent = true);
       }
-      return false;
+      console.log("fasle");
+
+      return (this.isCurrent = false);
     },
     follow() {
       if (!this.isAuthenticated) return;
@@ -104,6 +118,7 @@ export default {
   watch: {
     $route(to) {
       this.$store.dispatch(FETCH_PROFILE, to.params);
+      this.isCurrentUser();
     }
   }
 };

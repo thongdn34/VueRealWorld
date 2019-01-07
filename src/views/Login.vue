@@ -29,9 +29,7 @@
                 v-model="password"
                 placeholder="password"
                 name="password"
-                v-validate="{required:true,excluded:password}"
               >
-              <span>{{ errors.first('password') }}</span>
             </fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
           </form>

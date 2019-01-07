@@ -7,6 +7,7 @@
         :key="page"
         :class="paginationClass(page)"
         @click.prevent="changePage(page);"
+        
       >
         <a class="page-link" href v-text="page"/>
       </li>

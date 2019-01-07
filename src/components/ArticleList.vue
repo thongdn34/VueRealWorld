@@ -50,7 +50,7 @@ export default {
   },
   computed: {
     ...mapGetters(["articlesCount", "isLoading", "articles"]),
-    listConfig() {
+    config() {
       const { type } = this;
       const filters = {
         offset: (this.currentPage - 1) * this.itemPerPage,
@@ -82,7 +82,7 @@ export default {
   },
   watch: {
     currentPage(newValue) {
-      this.listConfig.filters.offset = (newValue - 1) * this.itemPerPage;
+      this.config.filters.offset = (newValue - 1) * this.itemPerPage;
       this.fetchArticle();
     },
     type() {
@@ -104,15 +104,13 @@ export default {
   },
   mounted() {
     this.fetchArticle();
-    console.log(1)
   },
   methods: {
     fetchArticle() {
-      this.$store.dispatch(FETCH_ARTICLES, this.listConfig);
-      console.log(this.isLoading);
+      this.$store.dispatch(FETCH_ARTICLES, this.config);
     },
     resetPanigation() {
-      this.listConfig.offset = 0;
+      this.config.offset = 0;
       this.currentPage = 1;
     }
   }

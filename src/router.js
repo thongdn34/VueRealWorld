@@ -46,7 +46,7 @@ export default new Router({
       component: () => import("./views/Profile"),
       children: [
         {
-          path: "",
+          path: "/@:username",
           name: "profile",
           component: () => import("./views/ProfileArticles")
         },

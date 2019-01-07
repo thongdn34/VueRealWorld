@@ -18,10 +18,7 @@ const apiService={
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
-  get(url, slug=""){
-    // debugger
-    // console.log(`${url}/${slug}`);
-    
+  get(url, slug=""){    
     return Vue.axios.get(`${url}/${slug}`).catch(err=>{
       throw new Error(`API service error ${err}`);
     });

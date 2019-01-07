@@ -3,7 +3,7 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-10 offset-md-1 col-xs-12">
-          <list-error :errors="errors"/>
+          <list-error :errors="error"/>
           <form @submit.prevent="onPublish(article.slug);">
             <fieldset :disabled="inProgress">
               <fieldset class="form-group">
@@ -87,7 +87,7 @@ export default {
     return {
       tagInput: null,
       inProgress: false,
-      errors: {}
+      error: {}
     };
   },
   computed: {
@@ -110,7 +110,10 @@ export default {
         })
         .catch(({ response }) => {
           this.inProgress = false;
-          this.errors = response.data.errors;
+          console.log(this.error);
+          
+          this.error = response.data.errors;
+          console.log(this.error);
         });
     },
     removeTag(tag) {
