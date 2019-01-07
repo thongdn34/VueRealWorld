@@ -82,12 +82,12 @@ export default {
   name: "Profile",
   data() {
     return {
-      isCurrent: false
+      isCurrent: true
     };
   },
   mounted() {
     this.$store.dispatch(FETCH_PROFILE, this.$route.params);
-    
+    this.isCurrentUser();
   },
   computed: {
     ...mapGetters(["currentUser", "profile", "isAuthenticated"])
