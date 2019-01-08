@@ -25,12 +25,7 @@ const actions={
       .then(async ({data})=>{
         await context.commit(SET_PROFILE,data.profile);
         return data;
-      })
-      .catch((response)=>{
-        console.log(response);
-        
-        context.commit(SET_ERROR, response.data.errors);
-      })
+      });
   },
   [FETCH_PROFILE_FOLLOW](context,payload){
     const{username}=payload;

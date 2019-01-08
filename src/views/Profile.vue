@@ -7,7 +7,7 @@
             <img :src="profile.image" class="user-img">
             <h4>{{ profile.username }}</h4>
             <p>{{ profile.bio }}</p>
-            <div v-if="!isCurrent">
+            <div v-if="isCurrent===false">
               <router-link
                 class="btn btn-sm btn-outline-secondary action-btn"
                 :to="{ name: 'settings' }"
@@ -82,13 +82,14 @@ export default {
   name: "Profile",
   data() {
     return {
-      isCurrent: true
+      isCurrent: false
     };
   },
-  mounted() {
+  beforeMount() {
     this.$store.dispatch(FETCH_PROFILE, this.$route.params);
     this.isCurrentUser();
   },
+
   computed: {
     ...mapGetters(["currentUser", "profile", "isAuthenticated"])
   },
@@ -99,13 +100,10 @@ export default {
         this.profile.username &&
         this.currentUser.username === this.profile.username
       ) {
-        // console.log("true");
-
         return (this.isCurrent = true);
+      } else {
+        return (this.isCurrent = false);
       }
-      // console.log("fasle");
-
-      return (this.isCurrent = false);
     },
     follow() {
       if (!this.isAuthenticated) return;
