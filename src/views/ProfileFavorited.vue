@@ -1,6 +1,7 @@
 <template>
   <div class="profile-page">
-   <article-list :favotired="favorited" :item-per-page="5"></article-list>
+   <article-list 
+   :favorited="favorited" :item-per-page="5"></article-list>
   </div>
 </template>
 

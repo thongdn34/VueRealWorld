@@ -37,7 +37,7 @@ export default {
       this.$store.dispatch(COMMENT_CREATE,{slug,comment})
         .then(()=>{
           this.comment=null;
-          this.errors={};
+          this.error={};
         })
         .catch(({response})=>{
           this.error=response.data.errors;

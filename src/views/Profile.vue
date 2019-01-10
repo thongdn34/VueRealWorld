@@ -7,7 +7,7 @@
             <img :src="profile.image" class="user-img">
             <h4>{{ profile.username }}</h4>
             <p>{{ profile.bio }}</p>
-            <div v-if="isCurrent===false">
+            <div v-if="isCurrentUser()">
               <router-link
                 class="btn btn-sm btn-outline-secondary action-btn"
                 :to="{ name: 'settings' }"
@@ -69,8 +69,6 @@
   </div>
 </template>
 
-
-
 <script>
 import {
   FETCH_PROFILE,
@@ -80,14 +78,8 @@ import {
 import { mapGetters } from "vuex";
 export default {
   name: "Profile",
-  data() {
-    return {
-      isCurrent: false
-    };
-  },
-  beforeMount() {
+  mounted() {
     this.$store.dispatch(FETCH_PROFILE, this.$route.params);
-    this.isCurrentUser();
   },
 
   computed: {
@@ -95,15 +87,10 @@ export default {
   },
   methods: {
     isCurrentUser() {
-      if (
-        this.currentUser.username &&
-        this.profile.username &&
-        this.currentUser.username === this.profile.username
-      ) {
-        return (this.isCurrent = true);
-      } else {
-        return (this.isCurrent = false);
+      if (this.currentUser.username && this.profile.username) {
+        return this.currentUser.username === this.profile.username;
       }
+      return false;
     },
     follow() {
       if (!this.isAuthenticated) return;
@@ -115,6 +102,8 @@ export default {
   },
   watch: {
     $route(to) {
+      console.log(1);
+
       this.$store.dispatch(FETCH_PROFILE, to.params);
       this.isCurrentUser();
     }
